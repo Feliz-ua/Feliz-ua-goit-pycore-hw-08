@@ -180,7 +180,8 @@ def change_contact(args, book):
     if name not in book:
         # якщо немає такого контакту - виняток
         raise KeyError  
-    book[name] = phone
+    record = book[name] 
+    record.edit_phone (old_phone, new_phone)
     return "Контактна інформація змінена."
 
 @input_error
@@ -271,8 +272,8 @@ def main():
 
         # Обробка команд бота
         if command in ["close", "exit"]:
-            save_data(book)
-            print("До побачення!")
+            save_data (book)
+            print ("До побачення!")
             break
         elif command == "hello":
             print("Чим можу допомогти?")
